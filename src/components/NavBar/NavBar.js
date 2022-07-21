@@ -1,4 +1,4 @@
-
+import CartWidget from "../CartWidget/CartWidget"
 function Navbar(){
 
     return(
@@ -15,7 +15,7 @@ function Navbar(){
         <a className="nav-link" href="#">Productos</a>
         <a className="nav-link" href="#">Categorias</a>
         <a className="nav-link" href="#">Sobre nosotros</a>
-       
+       <CartWidget/>
       </div>
     </div>
   </div>
