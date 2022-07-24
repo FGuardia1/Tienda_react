@@ -30,8 +30,7 @@ const prod3={
 <div>
   <h2 >{Titulo}</h2>
 
-  <div className="card-group">
-   
+  <div className="card-group mx-auto">
     <ItemProduct data={prod1}/>   
     <ItemProduct data={prod2}/>
     <ItemProduct data={prod3}/>

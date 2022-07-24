@@ -5,7 +5,10 @@ function App() {
   return (
     <div >
         <Navbar/>
-       <ItemListContainer Titulo="Productos destacados" />
+        <div className='container-fluid mx-auto'>
+          <ItemListContainer Titulo="Productos destacados" />
+        </div>
+       
     </div>
   );
 }
