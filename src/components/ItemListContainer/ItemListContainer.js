@@ -1,45 +1,37 @@
+import { useEffect, useState } from 'react'
 import './ItemListContainer.scss'
 import ItemProduct from "../ItemProduct/ItemProduct"
-
-
+import products from '../../utils/products.mock'
+import ItemList from '../ItemList/ItemList'
 function ItemListContainer({Titulo}){
-const prod1={
-  "id": 0,
-  "nombre": "Mouse Redragon Griffin M607 RGB USB 7200DPI",
-  "precio": 1730,
-  "stock": 8,
-  "imagen":"./assets/productsImages/Mouse.png"
-}
+const [listProducts,setListProducts]=useState([])
+const getProducts= new Promise((resolve,reject)=>{
+  setTimeout(() => {
+   resolve(products) 
+  }, 2000);
+})
 
-const prod2={
-  "id": 1,
-    "nombre": "Memoria Patriot Viper Steel 8gb Ddr4 3200mhz",
-    "precio": 4720,
-    "stock": 10,
-  "imagen":"./assets/productsImages/memoriaRam.png"
-}
-const prod3={
-  "id": 2,
-  "nombre": "Placa de Video Powercolor Radeon RX ",
-  "precio": 35500,
-  "stock": 5,
-  "imagen":"./assets/productsImages/placaVideo.png"
-}
+useEffect(()=>{
+getProducts
+.then((res)=>{
+setListProducts(res)
+})
+.catch((error)=>{
+console.log("Ocurrio un error")
+})
+
+},[])
+
+
 
     return(
-<div>
-  <h2 >{Titulo}</h2>
+          <div>
+            <h2 >{Titulo}</h2>
 
-  <div className="card-group mx-auto">
-    <ItemProduct data={prod1}/>   
-    <ItemProduct data={prod2}/>
-    <ItemProduct data={prod3}/>
-    
-  </div>
-</div>
-
-
-
+            <div className="card-group mx-auto">
+              <ItemList dataProducts={listProducts}/>
+            </div>
+          </div>
 
     )
 }
