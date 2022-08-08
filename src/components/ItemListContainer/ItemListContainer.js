@@ -34,7 +34,8 @@ useEffect(()=>{
   .catch((error)=>{
   console.log("Ocurrio un error")
   })
-},[listProducts,setListProducts])
+},[listProducts,setListProducts,categoryId])
+
     return(
           <div>
             

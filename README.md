@@ -2,6 +2,10 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## Pagina_de_ventas_de_productos_informaticos
+
+## Pagina hecha utilizando html, CSS y javascript con React
+
 ## Available Scripts
 
 In the project directory, you can run:
