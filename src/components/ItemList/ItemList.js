@@ -3,8 +3,7 @@ const ItemList=({dataProducts})=>{
 
 return (
     <>
-    {dataProducts.map((prod)=> <ItemProduct key={prod.id} data={prod}/>)}   
-    
+    {dataProducts.map((prod)=> <ItemProduct key={prod.id} data={prod}/>)}      
     </>
 )
 }

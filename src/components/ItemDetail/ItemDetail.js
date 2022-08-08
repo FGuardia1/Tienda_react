@@ -2,7 +2,7 @@ import './ItemDetail.scss'
 import ItemCount from '../ItemCount/ItemCount';
 
 function ItemDetail({data}){
-const {id,imagen,nombre,precio,stock,categoria}=data
+const {id,imagen,nombre,precio,stock,category}=data
    
    return(
 <div >
@@ -19,7 +19,7 @@ const {id,imagen,nombre,precio,stock,categoria}=data
                     <h4 className="box-title mt-5">Descripcion de Producto</h4>
                     <p className="mt-4">Hay STOCK disponible</p>
                     <p>Codigo: {id}</p>
-                    <p>Categoria: {categoria}</p>
+                    <p>Categoria: {category}</p>
                     <h2 className="mt-5">
                        ${precio}
                     </h2>

@@ -1,34 +1,45 @@
 import { useEffect, useState } from 'react'
 import './ItemListContainer.scss'
-import ItemProduct from "../ItemProduct/ItemProduct"
 import products from '../../utils/products.mock'
 import ItemList from '../ItemList/ItemList'
-function ItemListContainer({Titulo}){
-const [listProducts,setListProducts]=useState([])
+import  {useParams} from 'react-router-dom'
+
+
+function ItemListContainer(){
+
+  const [listProducts,setListProducts]=useState([])
+  const {categoryId}=useParams()
+
+
+const filtrarXcategoria= products.filter((products)=>products.category==categoryId)
+
+
 const getProducts= new Promise((resolve,reject)=>{
   setTimeout(() => {
-   resolve(products) 
+if(categoryId!=null){
+  resolve(filtrarXcategoria)
+}else{
+  resolve(products) 
+}
+
+   
   }, 2000);
 })
 
 useEffect(()=>{
-getProducts
-.then((res)=>{
-setListProducts(res)
-})
-.catch((error)=>{
-console.log("Ocurrio un error")
-})
-
-},[])
-
-
-
+  getProducts
+  .then((res)=>{
+  setListProducts(res)
+  })
+  .catch((error)=>{
+  console.log("Ocurrio un error")
+  })
+},[listProducts,setListProducts])
     return(
           <div>
-            <h2 >{Titulo}</h2>
+            
 
-            <div className="card-group mx-auto">
+            <div className="card-group mx-auto text-decoration-none">
               <ItemList dataProducts={listProducts}/>
             </div>
           </div>
