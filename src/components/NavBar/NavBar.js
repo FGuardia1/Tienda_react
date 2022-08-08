@@ -26,7 +26,6 @@ useEffect(()=>{
 <nav className="navbar navbar-expand-lg bg-light">
   <div className="container-fluid">
     <Link className="text-decoration-none" to='/' ><p className="navbar-brand" >Tienda Tech</p></Link>
-    
     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
       <span className="navbar-toggler-icon"></span>
     </button>

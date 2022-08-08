@@ -20,9 +20,7 @@ if(categoryId!=null){
   resolve(filtrarXcategoria)
 }else{
   resolve(products) 
-}
-
-   
+}  
   }, 2000);
 })
 
@@ -38,13 +36,10 @@ useEffect(()=>{
 
     return(
           <div>
-            
-
             <div className="card-group mx-auto text-decoration-none">
               <ItemList dataProducts={listProducts}/>
             </div>
           </div>
-
     )
 }
 
