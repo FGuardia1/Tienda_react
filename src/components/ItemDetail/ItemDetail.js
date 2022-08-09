@@ -1,12 +1,16 @@
 import './ItemDetail.scss'
 import ItemCount from '../ItemCount/ItemCount';
-
+import {useState} from "react"
+import { Link}from 'react-router-dom'
 function ItemDetail({data}){
 const {id,imagen,nombre,precio,stock,category}=data
    
+const [quantitySelected,setQuantitySelected]=useState(1)
+
+
+
    return(
-<div >
-    
+
 <div className="container">
     <div className="card">
         <div className="card-body">
@@ -22,18 +26,17 @@ const {id,imagen,nombre,precio,stock,category}=data
                     <h2 className="mt-5">
                        ${precio}
                     </h2>
-                    <div className='row'>
-                        <div className="col-lg-6">
-                           <ItemCount  stock={stock} initial={1}/> 
-                        </div>
-                    <button className="btn btn-primary btn-rounded col-lg-6">Comprar</button>
-                    </div>
+                    
+                    {  
+                      quantitySelected>1?<button className="btn btn-primary "><Link className="text-decoration-none text-white" to='/cart'>Comprar</Link></button>:<ItemCount  stock={stock} initial={1} setQuantitySelected={setQuantitySelected}/>
+                    }
+                    
                 </div> 
             </div>
         </div>
     </div>
 </div>
-</div>
+
     )
 }
 

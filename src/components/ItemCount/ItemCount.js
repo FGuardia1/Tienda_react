@@ -1,31 +1,36 @@
 import {useState} from "react"
 import './ItemCount.scss';
 
-function ItemCount({stock,initial}){
+function ItemCount({stock,initial,setQuantitySelected}){
     
 const [contador,setContador]=useState(initial) 
-const onSubtract=()=>{
+const removeQuantity=()=>{
     if(contador!=1){
    setContador(contador-1)     
-    }else{
-        console.log("No puede disminuir la cantidad")
     }
 }
-const onAdd=()=>{
+const addQuantity=()=>{
     if(contador==stock){
-        console.log("El stock no cubre lo pedido")
+      
     }else{
     setContador(contador+1)    
     }  
 }
+const onAdd=()=>{
+    setQuantitySelected(contador)
+}
+
+
 return(
     <div>
 
 <div className="btn-group " role="group" aria-label="Basic example">
-  <button type="button" className="btn btn-secondary" onClick={onSubtract}>-</button>
+  <button type="button" className="btn btn-secondary" onClick={removeQuantity}>-</button>
   <p className="text-center cantidad ">{contador}</p>
-  <button type="button" className="btn btn-secondary" onClick={onAdd}>+</button>
+  <button type="button" className="btn btn-secondary" onClick={addQuantity}>+</button>
+  <button type="button" className="btn btn-primary " onClick={onAdd}>Agregar al carrito</button>
 </div>
+
     </div>
 )
 

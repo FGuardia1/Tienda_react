@@ -15,7 +15,6 @@ const {imagen,nombre,precio,stock,id}=data
     </div>
     </Link> 
     <div className="card-body" align="center">
-       <ItemCount stock={stock} initial={1}/>
       <p href="#" className="btn btn-primary ">Comprar</p>
     </div>   
   </div>
