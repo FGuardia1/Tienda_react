@@ -15,9 +15,11 @@ const isInCart=(id)=>{
 const addItem = (product,cantidad) => {
     if(isInCart(product.id)){
         console.log("El producto se encuentra en el carrito de compras")
+        return false
     }else{
         product['cantidad'] = cantidad
         setCartProducts([...cartProducts, product]) 
+        return true
     }      
 }
 const removeItem = (itemId) => {

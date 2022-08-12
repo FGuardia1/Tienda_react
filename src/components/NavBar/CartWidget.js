@@ -14,11 +14,10 @@ const CartWidget = () => {
 
 const borrar=(e)=>{
     e.preventDefault();
-    const itemId=e.target.parentElement.parentElement.parentElement.parentElement.getAttribute("data_id")
+    const itemId=e.target.parentElement.parentElement.parentElement.getAttribute("data_id")
     removeItem(itemId)
   
 }
-
 
     const open = Boolean(anchorEl);
     const handleClick = (event) => {
@@ -56,12 +55,12 @@ const borrar=(e)=>{
                                 <p>Cantidad {product.cantidad}</p>
                             </div>
                             <div  className='cart-product__action'>
-                             <div onClick={borrar}><DeleteIcon/></div>   
+                             <DeleteIcon onClick={borrar}/>  
                             </div>
                         </div>
                     )
                 })}
-                <button onClick={() => clear()}>Borrar todo</button>
+                <button className="btn btn-danger" onClick={() => clear()}>Borrar todo</button>
             </Menu>
         </div>
     )

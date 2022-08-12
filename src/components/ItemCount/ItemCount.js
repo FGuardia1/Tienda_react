@@ -20,10 +20,12 @@ const addQuantity=()=>{
     }  
 }
 const onAdd=()=>{
-
-    {productData['cantidad'] = cantidad}
-    addItem(productData,cantidad)
-    setQuantitySelected(cantidad)
+    if(addItem(productData,cantidad)){
+        setQuantitySelected(cantidad)
+    }
+    
+    
+    
 }
 
 
