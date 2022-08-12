@@ -1,7 +1,9 @@
-import CartWidget from "../CartWidget/CartWidget"
+//import CartWidget from "../CartWidget/CartWidget"
 import categories from "../../utils/categories.mock"
 import {Link} from 'react-router-dom'
 import { useEffect, useState } from 'react'
+import CartWidget from "./CartWidget"
+import './NavBar.scss';
 function Navbar(){
 
   const [listCategories,setListCategories]=useState([])

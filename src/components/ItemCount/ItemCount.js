@@ -1,23 +1,29 @@
-import {useState} from "react"
+import {useState,useContext} from "react"
+import { CartContext } from "../../context/CartContext";
 import './ItemCount.scss';
 
-function ItemCount({stock,initial,setQuantitySelected}){
+function ItemCount({stock,initial,setQuantitySelected,productData}){
     
-const [contador,setContador]=useState(initial) 
+const [cantidad,setCantidad]=useState(initial) 
+const { addItem }=useContext(CartContext)
+
 const removeQuantity=()=>{
-    if(contador!=1){
-   setContador(contador-1)     
+    if(cantidad!=1){
+   setCantidad(cantidad-1)     
     }
 }
 const addQuantity=()=>{
-    if(contador==stock){
+    if(cantidad==stock){
       
     }else{
-    setContador(contador+1)    
+    setCantidad(cantidad+1)    
     }  
 }
 const onAdd=()=>{
-    setQuantitySelected(contador)
+
+    {productData['cantidad'] = cantidad}
+    addItem(productData,cantidad)
+    setQuantitySelected(cantidad)
 }
 
 
@@ -26,7 +32,7 @@ return(
 
 <div className="btn-group " role="group" aria-label="Basic example">
   <button type="button" className="btn btn-secondary" onClick={removeQuantity}>-</button>
-  <p className="text-center cantidad ">{contador}</p>
+  <p className="text-center cantidad ">{cantidad}</p>
   <button type="button" className="btn btn-secondary" onClick={addQuantity}>+</button>
   <button type="button" className="btn btn-primary " onClick={onAdd}>Agregar al carrito</button>
 </div>

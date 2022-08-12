@@ -5,7 +5,7 @@ import { Link}from 'react-router-dom'
 function ItemDetail({data}){
 const {id,imagen,nombre,precio,stock,category}=data
    
-const [quantitySelected,setQuantitySelected]=useState(1)
+const [quantitySelected,setQuantitySelected]=useState(0)
 
 
 
@@ -28,7 +28,7 @@ const [quantitySelected,setQuantitySelected]=useState(1)
                     </h2>
                     
                     {  
-                      quantitySelected>1?<button className="btn btn-primary "><Link className="text-decoration-none text-white" to='/cart'>Comprar</Link></button>:<ItemCount  stock={stock} initial={1} setQuantitySelected={setQuantitySelected}/>
+                      quantitySelected>0?<button className="btn btn-primary "><Link className="text-decoration-none text-white" to='/cart'>Comprar</Link></button>:<ItemCount  stock={stock} initial={1} setQuantitySelected={setQuantitySelected} productData={data} />
                     }
                     
                 </div> 
