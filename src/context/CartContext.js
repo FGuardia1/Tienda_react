@@ -4,38 +4,49 @@ const CartContext = createContext()
 
 const CartProvider = ({children}) => {
     const [cartProducts, setCartProducts] = useState([])
+    const [totalCart, setTotalCart] = useState(0)
+    const [cantidadProducts, setCantidadProducts] = useState(0)
 
 const isInCart=(id)=>{
     return cartProducts.find(prod => prod.id ==id)?true:false
 }
 
 
-
-
 const addItem = (product,cantidad) => {
     if(isInCart(product.id)){
-        console.log("El producto se encuentra en el carrito de compras")
         return false
     }else{
         product['cantidad'] = cantidad
-        setCartProducts([...cartProducts, product]) 
+        setCartProducts([...cartProducts, product])
+        setTotalCart(totalCart+product.precio * product.cantidad)
+        setCantidadProducts(cantidadProducts+cantidad)
         return true
     }      
 }
 const removeItem = (itemId) => {
+
+   let product=cartProducts.find(prod=>prod.id==itemId)
+   setTotalCart(totalCart-product.precio*product.cantidad)
+   setCantidadProducts(cantidadProducts-product.cantidad)
     setCartProducts(cartProducts.filter((producto) => producto.id != itemId)) ;
 }
 
-
-    const clear = () => {
+ const clear = () => {
         setCartProducts([])
+        setTotalCart(0)
+        setCantidadProducts(0)
     }
+
+
+
     const data = {
         cartProducts,
         setCartProducts,
         clear,
         addItem,
-        removeItem
+        removeItem,
+        cantidadProducts,
+        totalCart
     }
 
     return(

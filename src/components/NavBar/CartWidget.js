@@ -9,7 +9,7 @@ import './NavBar.scss';
 const CartWidget = () => {
     const [anchorEl, setAnchorEl] = useState(null);
 
-    const { cartProducts, clear,removeItem } = useContext(CartContext)
+    const { cartProducts, clear,removeItem,totalCart,cantidadProducts } = useContext(CartContext)
 
 
 const borrar=(e)=>{
@@ -28,6 +28,8 @@ const borrar=(e)=>{
     };
     return(
         <div className='cart-widget'>
+            {cartProducts.length!==0&& <p>{cantidadProducts} </p>}
+           
             <ShoppingCartIcon 
                 aria-controls={open ? 'basic-menu' : undefined}
                 aria-haspopup="true"
@@ -60,6 +62,7 @@ const borrar=(e)=>{
                         </div>
                     )
                 })}
+                <p>Total: ${totalCart} </p>
                 <button className="btn btn-danger" onClick={() => clear()}>Borrar todo</button>
             </Menu>
         </div>
