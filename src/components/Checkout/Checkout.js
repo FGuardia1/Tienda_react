@@ -17,11 +17,10 @@ const Checkout=()=>{
     }
 
 return(
-
-<>
+<div className='container'>
 {
     !cartProducts.length?<div>
-        <p>No hay items en el carrito</p>
+       <h1>No hay items en el carrito</h1> 
         <button className="btn btn-primary"><Link className="text-decoration-none text-white" to='/'>Volver</Link></button>
         </div>:
 <div>
@@ -42,14 +41,17 @@ return(
                         </div>
                     )
                 })}
-                <p>Total: ${totalCart} </p>
+                <p className='font-weight-bold'>Total: ${totalCart} </p>
                 <button className="btn btn-danger" onClick={() => clear()}>Borrar todo</button>
     </div>
     }
  
 
+</div>
 
-</>
+
+
+
 
    
 )

@@ -28,7 +28,7 @@ const borrar=(e)=>{
     };
     return(
         <div className='cart-widget'>
-            {cartProducts.length!==0&& <p>{cantidadProducts} </p>}
+            {cartProducts.length!==0&& <p className='cantidad-cart'>{cantidadProducts} </p>}
            
             <ShoppingCartIcon 
                 aria-controls={open ? 'basic-menu' : undefined}
@@ -62,7 +62,7 @@ const borrar=(e)=>{
                         </div>
                     )
                 })}
-                <p>Total: ${totalCart} </p>
+                <p className='font-weight-bold'>Total: ${totalCart} </p>
                 <button className="btn btn-danger" onClick={() => clear()}>Borrar todo</button>
             </Menu>
         </div>
