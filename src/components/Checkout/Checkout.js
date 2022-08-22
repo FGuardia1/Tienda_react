@@ -47,6 +47,28 @@ return(
     }
  
 
+ {cartProducts.map((product) => {
+                    return(
+                        <div className='item-cart-product' key={product.id} data_id={product.id}>
+                            <img src={product.imagen} alt="" />
+                            <div className='cart-product__details'>
+                                <p>{product.nombre}</p>
+                            </div>
+                            <div className='cart-product__details'>
+                                <p>$ {product.precio}</p>
+                                <p>Cantidad {product.cantidad}</p>
+                            </div>
+                            <div  className='cart-product__action'>
+                             <DeleteIcon onClick={borrar}/>  
+                            </div>
+                        </div>
+                    )
+                })}
+
+
+
+
+
 </div>
 
 

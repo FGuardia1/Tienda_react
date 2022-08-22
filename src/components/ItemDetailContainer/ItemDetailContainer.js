@@ -1,34 +1,34 @@
 import { useEffect, useState } from 'react'
-
 import ItemDetail from '../ItemDetail/ItemDetail'
-import products from '../../utils/products.mock'
 import  {useParams} from 'react-router-dom'
-
+import db from '../../firebaseConfig'
+import {doc,getDoc} from 'firebase/firestore'
 function ItemDetailContainer(){
 
-  const [product,setProduct]=useState([])
+const [product,setProduct]=useState([])
 
 const {id}=useParams()
 
-const getItem= new Promise((resolve,reject)=>{
-  setTimeout(() => {
-products.some((prod)=>{
-  if (prod.id==id){
-    resolve(prod) 
-  }
-}) 
-  }, 2000);
-})
+
 
 useEffect(()=>{
-  getItem
+  getProduct()
   .then((res)=>{
   setProduct(res)
   })
-  .catch((error)=>{
-  console.log("Ocurrio un error")
-  })
 },[])
+
+
+const getProduct= async()=>{
+
+const docRef=doc(db,"productos",id)
+const docSnapshot=await getDoc(docRef)
+let product=docSnapshot.data()
+product.id=docSnapshot.id
+return product
+
+}
+
 
     return(
           <div>        

@@ -4,22 +4,34 @@ import {Link} from 'react-router-dom'
 import { useEffect, useState } from 'react'
 import CartWidget from "./CartWidget"
 import './NavBar.scss';
+
+import {collection,getDocs} from 'firebase/firestore'
+import db from '../../firebaseConfig'
+
+
+
 function Navbar(){
 
   const [listCategories,setListCategories]=useState([])
 
 
-const getCategories= new Promise((resolve,reject)=>{
-  resolve(categories) 
-})
+
+const getCategories= async()=>{
+  const categoryCollection=collection(db,"categories")
+  const categorySnapShot=await getDocs(categoryCollection)
+   const categoryList =categorySnapShot.docs.map((doc)=>{
+                      let category=doc.data()
+                      category.id=doc.id
+                      return category
+                      })
+
+return categoryList
+ }
 
 useEffect(()=>{
-  getCategories
+  getCategories()
   .then((res)=>{
   setListCategories(res)
-  })
-  .catch((error)=>{
-  console.log("Ocurrio un error")
   })
 },[])
 

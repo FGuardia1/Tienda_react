@@ -28,7 +28,7 @@ const [quantitySelected,setQuantitySelected]=useState(0)
                     </h2>
                     
                     {  
-                      quantitySelected>0?<button className="btn btn-primary "><Link className="text-decoration-none text-white" to='/cart'>Comprar</Link></button>:<ItemCount  stock={stock} initial={1} setQuantitySelected={setQuantitySelected} productData={data} />
+                      quantitySelected>0?<button className="btn btn-primary"><Link className="text-decoration-none text-white" to='/cart'>Comprar</Link></button>:<ItemCount  stock={stock} initial={1} setQuantitySelected={setQuantitySelected} productData={data} />
                     }
                     
                 </div> 
