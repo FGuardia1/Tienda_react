@@ -51,7 +51,7 @@ useEffect(()=>{
         <a className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Categorias
         </a>
-        <div className="dropdown-menu" aria-labelledby="navbarDropdown">
+        <div className="dropdown-menu" aria-labelledby="navbarDropdown" style={{margin: 0}}>
           {listCategories.map((category,i)=>{
             return(<Link key={i} className="text-decoration-none" to={`/category/${category.id}`} ><p className="dropdown-item" >{category.nombre}</p></Link> )
           })}

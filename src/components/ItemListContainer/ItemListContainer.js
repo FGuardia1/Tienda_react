@@ -14,17 +14,6 @@ function ItemListContainer(){
 const filtrarXcategoria=()=> {return productList.filter((products)=>products.category==categoryId)}
 
 
-/* const getProducts= new Promise((resolve,reject)=>{
-  setTimeout(() => {
-if(categoryId!=null){
-  resolve(filtrarXcategoria)
-}else{
-  resolve(products) 
-}  
-  }, 2000);
-})
- */
-
 const getProducts= async()=>{
 const productCollection=collection(db,"productos")
 const productSnapShot=await getDocs(productCollection)
@@ -49,16 +38,11 @@ const productSnapShot=await getDocs(productCollection)
 
 
 useEffect(()=>{
-  getProducts()
-  .then((res)=>{
-setListProducts(res)
-
-  })
-
-
-
-
-},[listProducts,setListProducts,categoryId])
+                  getProducts()
+                  .then((res)=>{
+                setListProducts(res)
+                  })
+              },[categoryId])
 
     return(
           <div>
