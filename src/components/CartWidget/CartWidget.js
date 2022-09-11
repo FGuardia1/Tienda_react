@@ -1,11 +1,72 @@
-function CartWidget(){
+import {useState , useContext} from 'react'
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+import Menu from '@mui/material/Menu';
+import DeleteIcon from '@mui/icons-material/Delete';
+import { CartContext } from '../../context/CartContext';
+import './CartWidget.scss';
+import {Link} from 'react-router-dom'
+const CartWidget = () => {
+    const [anchorEl, setAnchorEl] = useState(null);
+
+    const { cartProducts, clear,removeItem,totalCart,cantidadProducts } = useContext(CartContext)
 
 
-return(
-    <div >
-       <img src="../assets/cart.png" className="img-thumbnail  border border-success border-3 border-opacity-50 rounded-3 " alt="..."></img>
-    </div>
-)
-
+const borrar=(e)=>{
+    e.preventDefault();
+    const itemId=e.target.parentElement.parentElement.parentElement.getAttribute("data_id")
+    removeItem(itemId)
+  
 }
+
+    const open = Boolean(anchorEl);
+    const handleClick = (event) => {
+        setAnchorEl(event.currentTarget);
+    };
+    const handleClose = () => {
+        setAnchorEl(null);
+    };
+    return(
+        <div className='cart-widget'>
+            {cartProducts.length!==0&& <p className='cantidad-cart'>{cantidadProducts} </p>}
+           
+            <ShoppingCartIcon 
+                aria-controls={open ? 'basic-menu' : undefined}
+                aria-haspopup="true"
+                aria-expanded={open ? 'true' : undefined}
+                onClick={handleClick}
+            />
+            <Menu
+                id="basic-menu"
+                anchorEl={anchorEl}
+                open={open}
+                onClose={handleClose}
+                MenuListProps={{
+                'aria-labelledby': 'basic-button',
+                }}
+            >
+              <Link className="text-decoration-none" to='/cart' ><p className="navbar-brand" ><button type="button" class="btn btn-primary m-2">Ir a checkOut</button></p></Link>   
+                {cartProducts.map((product) => {
+                    return(
+                        <div className='item-cart-product' key={product.id} data_id={product.id}>
+                            <img src={product.imagen} alt="" />
+                            <div className='cart-product__details'>
+                                <p>{product.nombre}</p>
+                            </div>
+                            <div className='cart-product__details'>
+                                <p>$ {product.precio}</p>
+                                <p>Cantidad {product.cantidad}</p>
+                            </div>
+                            <div  className='cart-product__action'>
+                             <DeleteIcon onClick={borrar}/>  
+                            </div>
+                        </div>
+                    )
+                })}
+                <p className="font-weight-bold">Total: ${totalCart} </p>
+                <button className="btn btn-danger m-2" onClick={() => clear()}>Borrar todo</button>
+            </Menu>
+        </div>
+    )
+}
+
 export default CartWidget

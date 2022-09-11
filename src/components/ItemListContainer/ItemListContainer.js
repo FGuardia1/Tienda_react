@@ -31,9 +31,6 @@ const productSnapShot=await getDocs(productCollection)
                       return productList
                     }  
 
-
-
-
 }
 
 
@@ -46,7 +43,7 @@ useEffect(()=>{
 
     return(
           <div>
-            <div className="card-group mx-auto text-decoration-none">
+            <div className="card-group mx-auto text-decoration-none d-flex flex-wrap justify-content-center">
               <ItemList dataProducts={listProducts}/>
             </div>
           </div>

@@ -22,10 +22,7 @@ const addQuantity=()=>{
 const onAdd=()=>{
     if(addItem(productData,cantidad)){
         setQuantitySelected(cantidad)
-    }
-    
-    
-    
+    }   
 }
 
 

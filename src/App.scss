@@ -36,3 +36,55 @@
     transform: rotate(360deg);
   }
 }
+
+
+.column {
+  display: flex;
+  flex-direction: column;
+  text-align: justify;
+
+  justify-items: center;
+  padding: 1rem;
+}
+
+.parrafo {
+  margin: 20px 20px;
+}
+
+.parrafo__titulo {
+  font-size: 33px;
+
+  text-align: center;
+}
+.parrafo__texto {
+  margin-top: 10px;
+  font-size: 25px;
+  text-align: justify;
+}
+
+.fundadores {
+  margin: 12px 12px;
+  text-align: center;
+  font-size: 25px;
+}
+
+.fundador__foto {
+  max-height: 250px;
+  border-radius: 50%;
+  border: 5px solid rgb(226, 226, 226);
+  margin: 12px;
+}
+.fundador__nombre {
+  font-size: 23px;
+}
+
+.fila {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.fila--wrap {
+  flex-wrap: wrap;
+}

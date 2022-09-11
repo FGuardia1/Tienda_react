@@ -1,9 +1,19 @@
 import './ItemProduct.scss';
-import ItemCount from '../ItemCount/ItemCount';
 import {Link} from 'react-router-dom'
+import {useContext,useState} from "react"
+import { CartContext } from "../../context/CartContext";
+
 function ItemProduct({data}){
-const {imagen,nombre,precio,stock,id}=data
-   
+const {imagen,nombre,precio,id}=data
+const { addItem }=useContext(CartContext)
+const [agregadoCarrito, setAgregadoCarrito] = useState(false)
+const onAdd=()=>{
+  if(addItem(data,1)){
+    setAgregadoCarrito(true)
+  }   
+}
+
+
    return( 
 <div >
   <div className="card ms-3" style={{width: "15rem"}}>
@@ -15,7 +25,7 @@ const {imagen,nombre,precio,stock,id}=data
     </div>
     </Link> 
     <div className="card-body" align="center">
-      <p href="#" className="btn btn-primary ">Comprar</p>
+   {agregadoCarrito?<button type="button" class="btn btn-secondary" disabled>Agregado!</button>:<button type="button" className="btn btn-primary " onClick={onAdd}>Agregar al carrito</button>}
     </div>   
   </div>
 </div>
