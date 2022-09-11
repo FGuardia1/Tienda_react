@@ -42,7 +42,7 @@ const products=[
     },
     {
       "id": 5,
-      "nombre": "Placa de Video Powercolor AMD BC-2235 10GB GDDR6 40Mh/s Bulk",
+      "nombre": "Placa de Video Powercolor AMD BC-2235 10GB GDDR6",
       "precio": 85000,
       "stock": 6,
       "imagen":"../assets/productsImages/placaVideo2.png",

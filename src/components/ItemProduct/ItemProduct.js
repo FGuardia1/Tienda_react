@@ -21,11 +21,11 @@ const onAdd=()=>{
     <img src={imagen} className="card-img-top" alt="..."/>
     <div className="card-body" align="center">
       <h5 className="card-title ">{nombre}</h5>
-      <p className="card-text">${precio}</p>
+      <p className="h4">${precio}</p>
     </div>
     </Link> 
     <div className="card-body" align="center">
-   {agregadoCarrito?<button type="button" class="btn btn-secondary" disabled>Agregado!</button>:<button type="button" className="btn btn-primary " onClick={onAdd}>Agregar al carrito</button>}
+   {agregadoCarrito?<button type="button" className="btn btn-secondary" disabled>Agregado!</button>:<button type="button" className="btn btn-primary " onClick={onAdd}>Agregar al carrito</button>}
     </div>   
   </div>
 </div>

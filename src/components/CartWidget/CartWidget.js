@@ -1,15 +1,16 @@
 import {useState , useContext} from 'react'
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import Menu from '@mui/material/Menu';
+import MenuItem from '@mui/material/MenuItem';
 import DeleteIcon from '@mui/icons-material/Delete';
 import { CartContext } from '../../context/CartContext';
 import './CartWidget.scss';
 import {Link} from 'react-router-dom'
+
+
 const CartWidget = () => {
     const [anchorEl, setAnchorEl] = useState(null);
-
     const { cartProducts, clear,removeItem,totalCart,cantidadProducts } = useContext(CartContext)
-
 
 const borrar=(e)=>{
     e.preventDefault();
@@ -44,17 +45,17 @@ const borrar=(e)=>{
                 'aria-labelledby': 'basic-button',
                 }}
             >
-              <Link className="text-decoration-none" to='/cart' ><p className="navbar-brand" ><button type="button" class="btn btn-primary m-2">Ir a checkOut</button></p></Link>   
+              <Link className="text-decoration-none" to='/cart' ><button type="button" className="btn btn-primary m-2">Ir a checkOut</button></Link>   
                 {cartProducts.map((product) => {
                     return(
                         <div className='item-cart-product' key={product.id} data_id={product.id}>
-                            <img src={product.imagen} alt="" />
+                            <img className="d-none d-lg-block d-xl-block" src={product.imagen} alt="" />
                             <div className='cart-product__details'>
                                 <p>{product.nombre}</p>
                             </div>
                             <div className='cart-product__details'>
                                 <p>$ {product.precio}</p>
-                                <p>Cantidad {product.cantidad}</p>
+                                <p>{product.cantidad} u.</p>
                             </div>
                             <div  className='cart-product__action'>
                              <DeleteIcon onClick={borrar}/>  

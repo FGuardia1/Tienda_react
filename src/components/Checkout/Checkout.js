@@ -5,6 +5,7 @@ import { Link}from 'react-router-dom'
 import Modal from '../Modal/Modal';
 import db from '../../firebaseConfig.js'
 import { collection, addDoc } from 'firebase/firestore'
+import "./Checkout.scss"
 
 const Checkout=()=>{
     const { cartProducts, clear,removeItem,totalCart } = useContext(CartContext)
@@ -45,8 +46,7 @@ const Checkout=()=>{
     const pushData = async (newOrder) => {
         const collectionOrder = collection(db, 'ordenes')
         const orderDoc = await addDoc(collectionOrder, newOrder)
-        setSuccess(orderDoc.id)
-        
+        setSuccess(orderDoc.id)   
     }
 
     const borrar=(e)=>{
@@ -54,7 +54,11 @@ const Checkout=()=>{
         const itemId=e.target.parentElement.parentElement.parentElement.getAttribute("data_id")
         removeItem(itemId)   
     }
-
+    const borrar2=(e)=>{
+        e.preventDefault();
+        const itemId=e.target.parentElement.parentElement.parentElement.getAttribute("data_id")
+       removeItem(itemId)   
+    }
 return(
 <div className='container'>
 {
@@ -63,59 +67,78 @@ return(
         <button className="btn btn-primary"><Link className="text-decoration-none text-white" to='/'>Volver</Link></button>
         </div>:
    <div>
-     {cartProducts.map((product) => {
+     <table className="table table-striped">
+  <thead>
+    <tr>
+      <th className="d-none d-lg-block d-xl-block"scope="col">Imagen</th>
+      <th scope="col">Nombre</th>
+      <th scope="col">Precio</th>
+      <th scope="col">Cantidad</th>
+      <th scope="col">Borrar</th>
+    </tr>
+  </thead>
+  <tbody>
+
+  {cartProducts.map((product) => {
                     return(
-                        <div className='item-cart-product' key={product.id} data_id={product.id}>
-                            <img src={product.imagen} alt="" />
-                            <div className='cart-product__details'>
-                                <p>{product.nombre}</p>
-                            </div>
-                            <div className='cart-product__details'>
-                                <p>$ {product.precio}</p>
-                                <p>Cantidad {product.cantidad}</p>
-                            </div>
-                            <div  className='cart-product__action'>
-                             <DeleteIcon onClick={borrar}/>  
-                            </div>
-                        </div>
+                        <tr key={product.id} data_id={product.id}>
+      <th className="d-none d-lg-block d-xl-block"scope="row"><img className="cart-img "src={product.imagen} alt="" /></th>
+      <td>{product.nombre}</td>
+      <td>${product.precio}</td>
+      <td>{product.cantidad}</td>
+      <td><DeleteIcon onClick={borrar2}/></td>                       
+    </tr>                   
                     )
                 })}
-                <p className='font-weight-bold'>Total: ${totalCart} </p>
-                <button className="btn btn-danger" onClick={() => clear()}>Borrar todo</button>
-                <button className="btn btn-success" onClick={() => setShowModal(true)}>Pagar</button>
+  </tbody>
+</table>
+                <p className='h3'>Total: ${totalCart} </p>
+                <button className="btn btn-outline-danger btn-lg m-2 " onClick={() => clear()}>Borrar todo</button>
+                <button className="btn btn-outline-primary btn-lg" onClick={() => setShowModal(true)}>Pagar</button>
 
                 {showModal && 
                     <Modal title="DATOS DE CONTACTO" close={() => setShowModal()}>
                         {success ? (
                             <>
                                <h2>Su orden se genero correctamente</h2>
-                               <p>ID de compra : {success}</p>
+                               <p className='h3'>ID de compra : {success}</p>
                             </>
                         ) : (
+                            
                             <form onSubmit={submitData}>
+                                <div className='form-row align-items-center '>
+                               <div className="col-md-7 m-2" >
                                 <input 
-                                    type='text' 
-                                    name='name' 
-                                    placeholder='Ingrese el nombre'
-                                    onChange={handleChange}
-                                    value={formData.name}
-                                />
+                                        type='text' 
+                                        name='name' 
+                                        placeholder='Ingrese el nombre'
+                                        onChange={handleChange}
+                                        value={formData.name}
+                                    />
+                               </div>
+                               <div className="col-md-7 m-2">
                                 <input 
-                                    type='number' 
-                                    name='phone' 
-                                    placeholder='Ingrese el telefono' 
-                                    value={formData.phone}
-                                    onChange={handleChange}
-                                />
+                                        type='number' 
+                                        name='phone' 
+                                        placeholder='Ingrese el telefono' 
+                                        value={formData.phone}
+                                        onChange={handleChange}
+                                    />
+                               </div>
+                               <div className="col-md-7 m-2">
                                 <input 
-                                    type='email' 
-                                    name='email' 
-                                    placeholder='Ingrese el mail'
-                                    value={formData.email}
-                                    onChange={handleChange}
+                                        type='email' 
+                                        name='email' 
+                                        placeholder='Ingrese el mail'
+                                        value={formData.email}
+                                        onChange={handleChange}
+                                    /> 
+                               </div>
 
-                                />
-                                <button className="btn btn-success" type="submit">Finalizar compra</button>
+                                    
+                               
+                                </div>
+                                <button className="btn btn-success m-3" type="submit">Finalizar compra</button>
                             </form>
                         )}
                     </Modal>
@@ -131,6 +154,7 @@ return(
 
 
     }
+
 
 
 

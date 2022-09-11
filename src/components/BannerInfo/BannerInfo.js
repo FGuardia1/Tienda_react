@@ -12,7 +12,7 @@ return(
         <div className="col-md-3 col-sm-6 text-center">
         
             <h3><PhoneIcon  fontSize="large"/><b>VENTA TELEFÓNICA</b></h3>
-            <p>(011) 7700-0048</p>
+            <p>(011) 1111-2222</p>
         </div>
         <div className="col-md-3 col-sm-6 text-center">
             <h3><ScheduleIcon fontSize="large"/> <b>HORARIOS</b></h3>

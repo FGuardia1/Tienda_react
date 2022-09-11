@@ -8,7 +8,7 @@ const Home=()=>{
 <CarouselAd/>
 <BannerInfo/>
 
-<h2>Productos destacados</h2>
+<h2 className="m-2">Productos destacados</h2>
 <ItemListContainer/>
 
 </>
