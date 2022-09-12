@@ -9,23 +9,24 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 ## La pagina utiliza las siguientes librerias:
 ### *Libreria:version*
 
- -   "@emotion/react": "^11.10.0",
- -   "@emotion/styled": "^11.10.0",
- -   "@mui/icons-material": "^5.8.4",
- -   "@mui/material": "^5.10.0",
- -   "@popperjs/core": "^2.11.5",
- -   "@testing-library/jest-dom": "^5.16.4",
- -   "@testing-library/react": "^13.3.0",
--    "@testing-library/user-event": "^13.5.0",
- -   "bootstrap": "^5.2.0",
--    "firebase": "^9.9.3",
--    "jquery": "^3.6.0",
--    "popper.js": "^1.16.1",
--    "react": "^18.2.0",
- -   "react-dom": "^18.2.0",
--    "react-router-dom": "^6.3.0",
--    "react-scripts": "5.0.1",
--    "sass": "^1.53.0",
+ -   "@emotion/react": "^11.10.0"
+ -   "@emotion/styled": "^11.10.0"
+ -   "@mui/icons-material": "^5.8.4"
+ -   "@mui/material": "^5.10.0"
+ -   "@popperjs/core": "^2.11.5"
+ -   "@testing-library/jest-dom": "^5.16.4"
+ -   "@testing-library/react": "^13.3.0"
+-    "@testing-library/user-event": "^13.5.0"
+ -   "bootstrap": "^5.2.0"
+-    "firebase": "^9.9.3"
+-    "jquery": "^3.6.0"
+-    "popper.js": "^1.16.1"
+-    "react": "^18.2.0"
+-   "react-dom": "^18.2.0"
+-   "react-responsive-carousel": "^3.2.23"
+-    "react-router-dom": "^6.3.0"
+-    "react-scripts": "5.0.1"
+-    "sass": "^1.53.0"
  -   "web-vitals": "^2.1.4"
 
 

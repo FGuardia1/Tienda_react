@@ -26,18 +26,16 @@ const onAdd=()=>{
 }
 
 
-return(
-    <div>
-
-<div className="btn-group " role="group" aria-label="Basic example">
-  <button type="button" className="btn btn-secondary" onClick={removeQuantity}>-</button>
-  <p className="text-center cantidad ">{cantidad}</p>
-  <button type="button" className="btn btn-secondary" onClick={addQuantity}>+</button>
-  <button type="button" className="btn btn-primary " onClick={onAdd}>Agregar al carrito</button>
-</div>
-
-    </div>
-)
+    return(
+        <div>
+            <div className="btn-group " role="group" aria-label="Basic example">
+                <button type="button" className="btn btn-secondary" onClick={removeQuantity}>-</button>
+                <p className="text-center cantidad ">{cantidad}</p>
+                <button type="button" className="btn btn-secondary" onClick={addQuantity}>+</button>
+                <button type="button" className="btn btn-primary " onClick={onAdd}>Agregar al carrito</button>
+            </div>
+        </div>
+        )
 
 }
 export default ItemCount

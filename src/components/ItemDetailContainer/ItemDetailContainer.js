@@ -20,22 +20,20 @@ useEffect(()=>{
 
 
 const getProduct= async()=>{
+        const docRef=doc(db,"productos",id)
+        const docSnapshot=await getDoc(docRef)
+        let product=docSnapshot.data()
+        product.id=docSnapshot.id
 
-const docRef=doc(db,"productos",id)
-const docSnapshot=await getDoc(docRef)
-let product=docSnapshot.data()
-product.id=docSnapshot.id
-return product
+        return product
 
-}
-
+      }
 
     return(
-          <div>        
-             < ItemDetail data={product}/>
-          </div>
-
-    )
+            <div>        
+              < ItemDetail data={product}/>
+            </div>
+          )
 }
 
 export default ItemDetailContainer
