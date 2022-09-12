@@ -17,7 +17,7 @@ const [quantitySelected,setQuantitySelected]=useState(0)
             <h3 className="card-title">{nombre}</h3>
             <div className="row">
                 <div className="col-lg-5 col-md-7">
-                    <img src={imagen} className="img-fluid rounded-5 ass"/>
+                    <img src={imagen} className="img-fluid rounded-5 ass" alt=""/>
                 </div>
                 <div className="col-lg-7 col-md-5 ">
                     <h4 className="box-title mt-5">Descripcion de Producto</h4>

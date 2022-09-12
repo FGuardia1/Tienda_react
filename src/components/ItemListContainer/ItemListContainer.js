@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react'
 import './ItemListContainer.scss'
-import products from '../../utils/products.mock'
 import ItemList from '../ItemList/ItemList'
 import  {useParams} from 'react-router-dom'
 import {collection,getDocs} from 'firebase/firestore'
@@ -11,7 +10,7 @@ function ItemListContainer(){
   const {categoryId}=useParams()
 
   let productList;
-const filtrarXcategoria=()=> {return productList.filter((products)=>products.category==categoryId)}
+const filtrarXcategoria=()=> {return productList.filter((products)=>products.category===categoryId)}
 
 
 const getProducts= async()=>{

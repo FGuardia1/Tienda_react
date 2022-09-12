@@ -1,7 +1,6 @@
 import {useState , useContext} from 'react'
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import Menu from '@mui/material/Menu';
-import MenuItem from '@mui/material/MenuItem';
 import DeleteIcon from '@mui/icons-material/Delete';
 import { CartContext } from '../../context/CartContext';
 import './CartWidget.scss';
@@ -27,7 +26,7 @@ const borrar=(e)=>{
         setAnchorEl(null);
     };
     return(
-        <div className='cart-widget'>
+        <div className=' cart-widget'>
             {cartProducts.length!==0&& <p className='cantidad-cart'>{cantidadProducts} </p>}
            
             <ShoppingCartIcon 
@@ -50,20 +49,17 @@ const borrar=(e)=>{
                     return(
                         <div className='item-cart-product' key={product.id} data_id={product.id}>
                             <img className="d-none d-lg-block d-xl-block" src={product.imagen} alt="" />
-                            <div className='cart-product__details'>
-                                <p>{product.nombre}</p>
-                            </div>
-                            <div className='cart-product__details'>
-                                <p>$ {product.precio}</p>
-                                <p>{product.cantidad} u.</p>
-                            </div>
+                                <p className='cart-product__details width_50 bg-light '>{product.nombre}</p>
+                                <p className='cart-product__details width_25'>$ {product.precio}</p>
+                                <p className='cart-product__details bg-light width_25'>{product.cantidad} u.</p>
+                            
                             <div  className='cart-product__action'>
                              <DeleteIcon onClick={borrar}/>  
                             </div>
                         </div>
                     )
                 })}
-                <p className="font-weight-bold">Total: ${totalCart} </p>
+                <p className="h4">Total: ${totalCart} </p>
                 <button className="btn btn-danger m-2" onClick={() => clear()}>Borrar todo</button>
             </Menu>
         </div>
